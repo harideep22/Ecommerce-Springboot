@@ -2,10 +2,7 @@ package com.example.Ecommerce.Springboot.Model;
 
 import com.example.Ecommerce.Springboot.Enum.CardType;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.sql.Date;
@@ -17,6 +14,7 @@ import java.sql.Date;
 @NoArgsConstructor
 @Table(name = "card")
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@Builder
 public class Card {
 
     @Id
@@ -25,10 +23,11 @@ public class Card {
 
     int cvv;
 
+    Date expiryDate;
+
     @Column(unique = true,nullable = false)
     String cardNo;
 
-    Date expiryDate;
 
     @Enumerated(EnumType.STRING)
     CardType cardType;

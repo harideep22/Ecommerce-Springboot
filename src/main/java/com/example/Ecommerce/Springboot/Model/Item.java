@@ -1,10 +1,7 @@
 package com.example.Ecommerce.Springboot.Model;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 @Entity
@@ -13,12 +10,11 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @Table(name = "item")
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@Builder
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
-
-    String name;
 
     int requiredQuantity;
 
@@ -28,6 +24,10 @@ public class Item {
 
     @ManyToOne
     @JoinColumn
-    Ordered order;
+    Ordered ordered;
+
+    @ManyToOne
+    @JoinColumn
+    Product product;
 
 }

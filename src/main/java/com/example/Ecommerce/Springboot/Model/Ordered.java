@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "order")
+@Table(name = "ordered")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Ordered {
     @Id
@@ -26,6 +27,7 @@ public class Ordered {
 
     int totalValue;
 
+    @CreationTimestamp
     Date orderDate;
 
     String cardUsed;
@@ -34,6 +36,6 @@ public class Ordered {
     @JoinColumn
     Customer customer;
 
-    @OneToMany(mappedBy = "order",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "ordered",cascade = CascadeType.ALL)
     List<Item> items=new ArrayList<>();
 }
