@@ -40,4 +40,6 @@ public class Customer {
     @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
     List<Ordered> orderList=new ArrayList<>();
 
+
+
 }

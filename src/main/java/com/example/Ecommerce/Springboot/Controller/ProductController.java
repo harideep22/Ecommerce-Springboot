@@ -4,6 +4,7 @@ import com.example.Ecommerce.Springboot.Dto.RequestDto.ProductRequestDto;
 import com.example.Ecommerce.Springboot.Dto.ResponseDto.ProductResponseDto;
 import com.example.Ecommerce.Springboot.Enum.ProductCategory;
 import com.example.Ecommerce.Springboot.Exception.InvalidSellerException;
+import com.example.Ecommerce.Springboot.Model.Product;
 import com.example.Ecommerce.Springboot.Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +32,16 @@ public class ProductController {
         return productService.getAllProductsByPriceAndCategory(price,productCategory);
     }
 
-    // get all products by seller emailid
+
+    @GetMapping("/gett/{emailId}")
+    public List<ProductResponseDto> getAllProductsByEmailId(@PathVariable ("emailId") String emailId){
+        return productService.getAllProductsByEmailId(emailId);
+    }
+
+    @GetMapping("/getAllOutOfStockProducts")
+    public List<ProductResponseDto> getAllOutOfStockProducts(){
+        return productService.getAllOutOfStockProducts();
+    }
 
     // delete a product by sellerid and productid
 

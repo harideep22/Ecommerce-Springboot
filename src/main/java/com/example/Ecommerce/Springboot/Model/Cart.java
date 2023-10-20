@@ -28,7 +28,6 @@ public class Cart {
     Customer customer;
 
 
-
     @OneToMany(mappedBy = "cart" , cascade = CascadeType.ALL)
     List<Item> items=new ArrayList<>();
 }

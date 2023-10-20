@@ -48,13 +48,12 @@ public class ItemService {
         Item item= ItemTransformer.ItemRequestToItem(itemRequestDto);
 
         // item.setCart(customer.getCart());
-
         item.setProduct(product);
 
         product.getItemList().add(item);
         // Product savedProduct=productRepository.save(product);
 
-         // int size=product.getItemList().size();
+        // int size=product.getItemList().size();
         return itemRepository.save(item);
 
     }

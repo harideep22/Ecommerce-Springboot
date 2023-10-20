@@ -36,7 +36,7 @@ public class CartController {
             return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
-
+    @PostMapping("/checkout")
     public OrderResponseDto checkOutCard(@RequestBody CheckOutCartRequestDto checkOutCartRequestDto) throws Exception {
         return cartService.checkOutCart(checkOutCartRequestDto);
     }
